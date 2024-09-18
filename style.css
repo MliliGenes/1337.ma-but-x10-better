@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#hero {
+  background-image: url(/bg.jpg);
+  background-size: cover;
+  background-position: 50% 100%;
+}
+
+#thumbnail {
+  position: relative;
+  background-image: url(/vd.jpg);
+  background-position: center;
+  background-size: 100%;
+  transition: background-size 500ms ease;
+}
+
+#thumbnail:hover {
+  background-size: 110%;
+}
+
+#play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  transition: ease 100ms;
+}

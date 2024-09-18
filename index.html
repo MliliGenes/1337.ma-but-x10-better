@@ -2,15 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>1337 Coding School</title>
   </head>
   <body>
-    <div id="app" class="relative w-full min-h-svh bg-black">
-      <header class="">
-        <div>
-          <div id="logo">
+    <div
+      id="app"
+      class="antialiased font-sora relative w-full min-h-screen bg-black text-white"
+    >
+      <header
+        class="z-[1000] fixed top-0 left-0 w-full bg-black bg-opacity-80 backdrop-blur-sm"
+      >
+        <nav
+          class="px-12 h-24 max-w-screen-xl mx-auto flex items-center justify-between"
+        >
+          <div id="logo" class="w-20">
             <svg viewBox="0 0 76 20" fill="none">
               <path
                 d="M2.8333 17.6623H5.92418V2.33766H2.31816V5.45455H0V1.49012e-07H8.75748V17.6623H11.8484V20H2.8333V17.6623Z"
@@ -30,8 +49,143 @@
               ></path>
             </svg>
           </div>
-        </div>
+          <ul class="flex gap-10 font-extralight text-sm">
+            <li class="text-gray-400 hover:text-white">
+              <a href="">DNA</a>
+            </li>
+            <li class="text-gray-400 hover:text-white">
+              <a href="">Our Campuses</a>
+            </li>
+            <li class="text-gray-400 hover:text-white">
+              <a href="">Concept</a>
+            </li>
+            <li class="text-gray-400 hover:text-white">
+              <a href="">The School</a>
+            </li>
+            <li class="text-gray-400 hover:text-white">
+              <a href="">Join Us</a>
+            </li>
+          </ul>
+        </nav>
       </header>
+      <section id="hero">
+        <div class="max-w-screen-xl mx-auto pt-44 text-center">
+          <div class="px-32 flex flex-col gap-8 items-center mb-32">
+            <span
+              class="rounded-full px-3 py-1 text-xs text-white border border-white font-medium"
+              id="slogan1"
+              ><i class="fa-solid fa-circle mr-2"></i> 1337: The future is
+              loading, are you ready?</span
+            >
+            <h1 id="headOne" class="text-7xl">
+              <span>Unlock</span>
+              <span>Your</span>
+              <span>Potential</span>
+              <span>in</span> <span>a</span>
+              <span>World</span>
+              <span>of</span>
+              <span>Code</span>
+            </h1>
+            <p
+              id="subtitleOne"
+              class="text-lg text-gray-300 max-w-[750px] font-extralight leading-loose"
+            >
+              Join a revolutionary peer-to-peer learning journey and become the
+              developer of tomorrow—without instructors, classrooms, or limits.
+            </p>
+            <div class="flex gap-5">
+              <a
+                id="btn1"
+                href=""
+                class="font-medium px-6 py-3 rounded bg-white text-black"
+                >Learn More</a
+              >
+              <a
+                id="btn2"
+                href=""
+                class="font-medium px-6 py-3 rounded border border-white"
+                >Apply Now</a
+              >
+            </div>
+          </div>
+          <span id="subtitle3" class="font-thin text-sm text-white mb-8"
+            >Powered by leading companies and sponsors</span
+          >
+          <div class="flex justify-center items-center py-6 gap-12">
+            <img
+              src="./Color Fill 1.png"
+              id="item1"
+              alt=""
+              class="h-9 object-contain"
+            />
+            <img
+              src="./42-Final-sigle-seul.png"
+              id="item2"
+              alt=""
+              class="h-9 object-contain"
+            />
+            <img
+              src="./logo-white.png"
+              id="item3"
+              alt=""
+              class="h-9 object-contain"
+            />
+          </div>
+        </div>
+      </section>
+      <section id="video">
+        <div class="max-w-screen-xl mx-auto py-40 text-center">
+          <div class="px-32 flex flex-col gap-8 items-center mb-28">
+            <h1 id="headTwo" class="text-7xl">
+              <span>The</span> <span>DNA</span> <span>of</span>
+              <span>1337</span>
+            </h1>
+            <p
+              id="subtitleTwo"
+              class="text-lg text-gray-300 max-w-[750px] font-extralight leading-loose"
+            >
+              I code, you code, together we shape the future of technology.
+            </p>
+            <div
+              class="w-full aspect-video rounded overflow-hidden"
+              id="thumbnail"
+            >
+              <div
+                class="bg-black text-white text-2xl flex justify-center items-center w-20 aspect-square rounded-full"
+                id="play-btn"
+              >
+                <i class="fa-solid fa-play"></i>
+              </div>
+            </div>
+          </div>
+
+          <p class="">
+            1337 is the first to provide IT training in Morocco, completely free
+            of charge, open and accessible to anyone between the ages of 18 and
+            30. No need for an IT degree, or of having undergone extensive IT
+            training. The only criteria for admission in Treize, Trente-Sept is
+            CREATIVITY.
+          </p>
+          <p class="">
+            The Treize, Trente-Sept educational approach is based on
+            peer-learning. A participatory operating style allowing students to
+            unleash their creativity through project-based learning. To train
+            the future coders of tomorrow, we had to rethink learning. We had to
+            make IT something fun, exciting and at odds with the restrictive
+            vision that the general public may have about it.
+          </p>
+          <p class="">
+            1337 is the coding school par excellence, completely free of charge
+            and accessible to all with no prerequisite of a degree. It offers a
+            full immersion in a universe where the future is already present.
+            Where IT and the lines of code are way more than a vague and
+            off-putting concept…
+          </p>
+          <p class="">
+            Treize, Trente-Sept, a forward-looking school from the present.
+          </p>
+        </div>
+      </section>
     </div>
     <script type="module" src="/main.js"></script>
   </body>
