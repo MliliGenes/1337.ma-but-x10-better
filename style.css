@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  /* outline: 1px solid red; */
+}
+
 #hero {
   background-image: url(/bg.jpg);
   background-size: cover;
@@ -21,9 +25,18 @@
 }
 
 #play-btn {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   transition: ease 100ms;
+}
+
+#card {
+  background-image: radial-gradient(
+    circle at bottom right,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
 }
