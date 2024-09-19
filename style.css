@@ -61,7 +61,7 @@
   transition: 400ms ease all;
   overflow: hidden;
   backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .card > span {
@@ -75,7 +75,7 @@
   inset: 0;
   aspect-ratio: 1/1;
   background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
+    1000px circle at var(--mouse-x) var(--mouse-y),
     rgba(255, 255, 255, 0.05),
     transparent 40%
   );
@@ -88,6 +88,7 @@
 }
 
 .card:hover {
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.225);
 }
 

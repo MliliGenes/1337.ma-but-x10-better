@@ -91,10 +91,10 @@ function slide(elementIds) {
   });
 
   tl.from(elements, {
-    duration: 1.2,
-    x: -100,
+    duration: 2,
+    x: -10,
     opacity: 0,
-    stagger: 0.25,
+    stagger: 0.5,
   });
 
   return tl;
