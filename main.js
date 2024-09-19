@@ -23,7 +23,6 @@ function setupTextAnimation(headingId) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: heading,
-
       toggleActions: "play none none none",
     },
   });
@@ -79,6 +78,28 @@ function goUP(elementIds) {
   return tl;
 }
 
+function slide(elementIds) {
+  const elements = elementIds.map((elementId) =>
+    document.getElementById(elementId)
+  );
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: elements,
+      toggleActions: "play none none none",
+    },
+  });
+
+  tl.from(elements, {
+    duration: 1.2,
+    x: -100,
+    opacity: 0,
+    stagger: 0.1,
+  });
+
+  return tl;
+}
+
 function setupAllAnimations() {
   const headingIds = ["headOne", "headTwo"];
   headingIds.forEach(setupTextAnimation);
@@ -94,7 +115,7 @@ function setupAllAnimations() {
 
   goUP(["btn1", "btn2"]);
   goUP(["item1", "item2", "item3", "item4"]);
-  goUP(["card1", "card2", "card3", "card4"]);
+  slide(["card1", "card2", "card3", "card4"]);
 }
 
 document.addEventListener("DOMContentLoaded", setupAllAnimations);

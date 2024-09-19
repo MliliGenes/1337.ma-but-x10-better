@@ -43,6 +43,8 @@
 }
 
 .card {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
   transition: 400ms ease all;
   overflow: hidden;
@@ -66,12 +68,12 @@
 }
 
 .card:hover {
-  /* @apply border-opacity-25; */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .play {
   position: absolute;
-  top: -50%;
+  bottom: calc(100% + 10px);
   width: 120px;
   opacity: 0;
   translate: 0 10px;
