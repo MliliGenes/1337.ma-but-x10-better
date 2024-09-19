@@ -23,7 +23,7 @@ function setupTextAnimation(headingId) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: heading,
-      markers: true,
+
       toggleActions: "play none none none",
     },
   });
@@ -42,7 +42,7 @@ function fadeIn(elementId) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: element,
-      markers: true,
+
       toggleActions: "play none none none",
     },
   });
@@ -64,7 +64,7 @@ function goUP(elementIds) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: elements,
-      markers: true,
+
       toggleActions: "play none none none",
     },
   });
@@ -83,7 +83,13 @@ function setupAllAnimations() {
   const headingIds = ["headOne", "headTwo"];
   headingIds.forEach(setupTextAnimation);
 
-  const subtitlesIds = ["subtitleOne", "subtitleTwo", "subtitle3", "slogan1"];
+  const subtitlesIds = [
+    "subtitleOne",
+    "subtitleTwo",
+    "subtitle3",
+    "slogan1",
+    "thumbnail",
+  ];
   subtitlesIds.forEach(fadeIn);
 
   goUP(["btn1", "btn2"]);
