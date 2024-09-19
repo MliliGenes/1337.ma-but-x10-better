@@ -118,4 +118,30 @@ function setupAllAnimations() {
   slide(["card1", "card2", "card3", "card4"]);
 }
 
-document.addEventListener("DOMContentLoaded", setupAllAnimations);
+function getCords(e) {
+  const { currentTarget: card } = e;
+
+  const rect = card.getBoundingClientRect(),
+    x = e.clientX - rect.left,
+    y = e.clientY - rect.top;
+
+  card.style.setProperty("--mouse-x", `${x}px`);
+  card.style.setProperty("--mouse-y", `${y}px`);
+}
+
+function setCords(item) {
+  console.log(item);
+  item.onmousemove = (e) => {
+    getCords(e);
+  };
+}
+
+function cardsFollowEffect() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(setCords);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupAllAnimations();
+  cardsFollowEffect();
+});
