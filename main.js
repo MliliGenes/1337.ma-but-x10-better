@@ -91,7 +91,7 @@ function slide(elementIds) {
   });
 
   tl.from(elements, {
-    duration: 2,
+    duration: 0.5,
     x: -10,
     opacity: 0,
     stagger: 0.5,
@@ -118,27 +118,17 @@ function setupAllAnimations() {
   slide(["card1", "card2", "card3", "card4"]);
 }
 
-function getCords(e) {
-  const { currentTarget: card } = e;
-
-  const rect = card.getBoundingClientRect(),
-    x = e.clientX - rect.left,
-    y = e.clientY - rect.top;
-
-  card.style.setProperty("--mouse-x", `${x}px`);
-  card.style.setProperty("--mouse-y", `${y}px`);
-}
-
-function setCords(item) {
-  console.log(item);
-  item.onmousemove = (e) => {
-    getCords(e);
-  };
-}
-
 function cardsFollowEffect() {
-  const cards = document.querySelectorAll(".card");
-  cards.forEach(setCords);
+  document.getElementById("grid-cards").onmousemove = (e) => {
+    for (const card of document.getElementsByClassName("card")) {
+      const rect = card.getBoundingClientRect(),
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
+
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    }
+  };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
