@@ -114,7 +114,7 @@ function setupAllAnimations() {
   subtitlesIds.forEach(fadeIn);
 
   goUP(["btn1", "btn2"]);
-  goUP(["item1", "item2", "item3", "item4"]);
+  goUP(["logos"]);
   slide(["card1", "card2", "card3", "card4"]);
 }
 
