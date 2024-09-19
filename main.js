@@ -94,7 +94,7 @@ function slide(elementIds) {
     duration: 1.2,
     x: -100,
     opacity: 0,
-    stagger: 0.1,
+    stagger: 0.25,
   });
 
   return tl;
