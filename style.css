@@ -6,10 +6,12 @@
   /* outline: 1px solid red; */
 }
 
-#hero {
+#app {
   background-image: url(/bg.jpg);
-  background-size: cover;
-  background-position: 50% 100%;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: 50% 0%;
 }
 
 #thumbnail {
@@ -48,27 +50,41 @@
   position: relative;
   transition: 400ms ease all;
   overflow: hidden;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card > span {
+  opacity: 0.5;
+  transition: 400ms ease all;
 }
 
 .card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: radial-gradient(
-    circle at 100% 100%,
-    rgb(255, 255, 255),
-    transparent
-  );
+  translate: 50% 50%;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  aspect-ratio: 1/1;
+  background: rgb(255, 255, 255);
+  filter: blur(120px);
   opacity: 0.05;
-  transition: 500ms ease all;
+  transition: 800ms ease all;
 }
 
 .card:hover::before {
-  opacity: 0.1;
+  translate: -50% -50%;
+  opacity: 0.15;
+  width: 90%;
 }
 
 .card:hover {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.225);
+}
+
+.card:hover > span {
+  opacity: 0.8;
 }
 
 .play {
