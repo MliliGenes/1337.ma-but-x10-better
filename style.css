@@ -24,19 +24,61 @@
   background-size: 110%;
 }
 
+#thumbnail::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: 500ms ease-in opacity;
+}
+
+#thumbnail:hover::before {
+  opacity: 0.6;
+}
+
 #play-btn {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  transition: ease 100ms;
+  position: relative;
 }
 
 .card {
+  position: relative;
+  transition: 400ms ease all;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: radial-gradient(
-    circle at bottom right,
-    rgba(255, 255, 255, 0.05),
+    circle at 100% 100%,
+    rgb(255, 255, 255),
     transparent
   );
+  opacity: 0.05;
+  transition: 500ms ease all;
+}
+
+.card:hover::before {
+  opacity: 0.1;
+}
+
+.card:hover {
+  /* @apply border-opacity-25; */
+}
+
+.play {
+  position: absolute;
+  top: -50%;
+  width: 120px;
+  opacity: 0;
+  translate: 0 10px;
+  transition: 250ms ease all;
+}
+
+#play-btn:hover > .play {
+  translate: 0 0;
+  opacity: 1;
 }
