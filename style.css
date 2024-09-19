@@ -33,7 +33,7 @@
   transition: ease 100ms;
 }
 
-#card {
+.card {
   background-image: radial-gradient(
     circle at bottom right,
     rgba(255, 255, 255, 0.05),

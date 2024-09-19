@@ -70,7 +70,7 @@ function goUP(elementIds) {
   });
 
   tl.from(elements, {
-    duration: 1,
+    duration: 1.2,
     y: 30,
     opacity: 0,
     stagger: 0.1,
@@ -92,7 +92,9 @@ function setupAllAnimations() {
   ];
   subtitlesIds.forEach(fadeIn);
 
-  goUP(["btn1", "btn2", "item1", "item2", "item3", "item4"]);
+  goUP(["btn1", "btn2"]);
+  goUP(["item1", "item2", "item3", "item4"]);
+  goUP(["card1", "card2", "card3", "card4"]);
 }
 
 document.addEventListener("DOMContentLoaded", setupAllAnimations);
