@@ -147,7 +147,7 @@ function init() {
     75,
     window.innerWidth / window.innerHeight,
     0.1,
-    800
+    2000
   );
   camera.position.z = 50;
 
@@ -192,7 +192,7 @@ function init() {
           void main() {
             vec2 uv = gl_PointCoord.xy - vec2(0.5); // Center the UV coordinates
             float r = length(uv);                   // Get the distance from the center
-            float glow = exp(-r * 20.0);             // Create a glow effect by fading the edges
+            float glow = exp(-r * 35.0);             // Create a glow effect by fading the edges
             gl_FragColor = vec4(vColor, glow * pointAlpha); // Glow and transparency effect
           }
         `,
@@ -207,9 +207,9 @@ function init() {
   }
 
   // Create multiple particle layers with varying depth
-  createParticleLayer(500, 5.5, 0.8, 0); // Layer 1: farthest
-  createParticleLayer(1000, 10.0, 1, -10); // Layer 2: middle
-  createParticleLayer(2000, 12.0, 2, -50); // Layer 3: closest
+  createParticleLayer(500, 30.5, 0.8, -60); // Layer 1: farthest
+  createParticleLayer(1000, 10.0, 1, 0); // Layer 2: middle
+  createParticleLayer(2000, 12.0, 2, 10); // Layer 3: closest
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove, false);
