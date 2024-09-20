@@ -133,38 +133,82 @@ function cardsFollowEffect() {
   };
 }
 
-let scene, camera, renderer, particles, material;
-
-// const clock = new THREE.Clock
+let scene, camera, renderer, particles;
+let mouseX = 0,
+  mouseY = 0;
 
 function init() {
-  scene = new THREE.Scene();
+  const canvas = document.getElementById("particle-canvas");
 
+  scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
   );
-  camera.position.z = 50;
+  camera.position.z = 5;
 
-  renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById("particle-canvas"),
-    alpha: true,
-  });
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
 
+  const geometry = new THREE.BufferGeometry();
+  const vertices = [];
+  const numParticles = 500;
+
+  for (let i = 0; i < numParticles; i++) {
+    const x = Math.random() * 2000 - 1000;
+    const y = Math.random() * 2000 - 1000;
+    const z = Math.random() * 2000 - 1000;
+    vertices.push(x, y, z);
+  }
+
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(vertices, 3)
+  );
+
+  const material = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+  particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
   window.addEventListener("resize", onWindowResize, false);
-  
+  document.addEventListener("mousemove", onMouseMove, false);
+  window.addEventListener("scroll", onScroll, false);
+
+  animate();
 }
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  particles.material.uniforms.pixelRatio.value = window.devicePixelRatio;
 }
 
+function onMouseMove(event) {
+  mouseX = (event.clientX - window.innerWidth / 2) * 0.01;
+  mouseY = (event.clientY - window.innerHeight / 2) * 0.01;
+}
+
+function onScroll() {
+  const scrollY = window.scrollY;
+  particles.rotation.y = scrollY * 0.001;
+  particles.rotation.z = scrollY * 0.001;
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  particles.rotation.x += 0.001;
+  particles.rotation.y += 0.001;
+
+  camera.position.x += (mouseX - camera.position.x) * 0.05;
+  camera.position.y += (-mouseY - camera.position.y) * 0.05;
+
+  camera.lookAt(scene.position);
+
+  renderer.render(scene, camera);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAllAnimations();
