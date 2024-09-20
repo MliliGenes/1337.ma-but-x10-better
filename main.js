@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import * as THREE from "three";
+
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 function setupTextAnimation(headingId) {
@@ -131,7 +133,41 @@ function cardsFollowEffect() {
   };
 }
 
+let scene, camera, renderer, particles, material;
+
+// const clock = new THREE.Clock
+
+function init() {
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  camera.position.z = 50;
+
+  renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById("particle-canvas"),
+    alpha: true,
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  window.addEventListener("resize", onWindowResize, false);
+  
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  particles.material.uniforms.pixelRatio.value = window.devicePixelRatio;
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   setupAllAnimations();
   cardsFollowEffect();
+  init();
 });

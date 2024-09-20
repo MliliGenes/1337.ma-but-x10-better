@@ -49,6 +49,21 @@
   position: relative;
 }
 
+#grid-cards {
+  z-index: 0;
+  position: relative;
+}
+
+#grid-cards::before {
+  position: absolute;
+  content: "";
+  inset: -10px;
+  background-color: rgb(255, 255, 255, 0.015);
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
 .card {
   cursor: pointer;
   position: relative;
@@ -94,7 +109,7 @@
 .card::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.075),
     transparent 50%
   );
   z-index: 3;
@@ -103,7 +118,7 @@
 .card-border {
   background: radial-gradient(
     400px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.3),
     transparent 40%
   );
   z-index: 1;
