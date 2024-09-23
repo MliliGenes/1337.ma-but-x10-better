@@ -206,9 +206,9 @@ function init() {
     scene.add(particles);
   }
 
-  createParticleLayer(500, 10.5, 1, -60);
-  createParticleLayer(1000, 15.0, 0.3, 0);
-  createParticleLayer(150, 20.0, 0.8, 10);
+  createParticleLayer(600, 12.5, 0.6, 0);
+  createParticleLayer(200, 15.0, 0.8, -10);
+  createParticleLayer(150, 18.0, 1.6, 10);
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove, false);
