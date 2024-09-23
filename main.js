@@ -133,12 +133,12 @@ function cardsFollowEffect() {
   };
 }
 
-let scene, camera, renderer, particles;
+let scene, camera, renderer;
 let mouseX = 0,
   mouseY = 0;
+
 const particleLayers = [];
 
-// Initialize the scene
 function init() {
   const canvas = document.getElementById("particle-canvas");
 
@@ -150,11 +150,11 @@ function init() {
     2000
   );
   camera.position.z = 50;
+  camera.position.x = Math.PI / 2;
 
   renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  // Function to create a particle layer with varying depth, size, and alpha
   function createParticleLayer(numParticles, size, alpha, zOffset) {
     const geometry = new THREE.BufferGeometry();
     const vertices = [];
@@ -162,7 +162,7 @@ function init() {
     for (let i = 0; i < numParticles; i++) {
       const x = Math.random() * 2000 - 1000;
       const y = Math.random() * 2000 - 1000;
-      const z = Math.random() * 2000 - 1000 + zOffset; // Add zOffset for depth layering
+      const z = Math.random() * 2000 - 1000 + zOffset;
       vertices.push(x, y, z);
     }
 
@@ -173,8 +173,8 @@ function init() {
 
     const material = new THREE.ShaderMaterial({
       uniforms: {
-        pointSize: { value: size }, // Size varies based on the layer
-        pointAlpha: { value: alpha }, // Adjust alpha to give depth transparency
+        pointSize: { value: size },
+        pointAlpha: { value: alpha },
       },
       vertexShader: `
           uniform float pointSize;
@@ -192,65 +192,66 @@ function init() {
           void main() {
             vec2 uv = gl_PointCoord.xy - vec2(0.5); // Center the UV coordinates
             float r = length(uv);                   // Get the distance from the center
-            float glow = exp(-r * 35.0);             // Create a glow effect by fading the edges
+            float glow = exp(-r * 25.0);             // Create a glow effect by fading the edges
             gl_FragColor = vec4(vColor, glow * pointAlpha); // Glow and transparency effect
           }
         `,
-      transparent: true, // Allow stars to be transparent
-      blending: THREE.AdditiveBlending, // Additive blending for glowing effect
-      depthWrite: false, // Don't write to depth buffer for additive blending
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
     });
 
     const particles = new THREE.Points(geometry, material);
-    particleLayers.push(particles); // Add this layer to the array
+    particleLayers.push(particles);
     scene.add(particles);
   }
 
-  // Create multiple particle layers with varying depth
-  createParticleLayer(500, 30.5, 0.8, -60); // Layer 1: farthest
-  createParticleLayer(1000, 10.0, 1, 0); // Layer 2: middle
-  createParticleLayer(2000, 12.0, 2, 10); // Layer 3: closest
+  createParticleLayer(500, 10.5, 1, -60);
+  createParticleLayer(1000, 15.0, 0.3, 0);
+  createParticleLayer(150, 20.0, 0.8, 10);
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove, false);
   window.addEventListener("scroll", onScroll, false);
 
-  animate(); // Start the animation loop
+  animate();
 }
 
-// Resize handler
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Mouse move handler
 function onMouseMove(event) {
-  mouseX = (event.clientX - window.innerWidth / 2) * 0.005;
+  mouseX = (event.clientX - window.innerWidth / 2) * 0.01;
   mouseY = (event.clientY - window.innerHeight / 2) * 0.01;
 }
 
-// Scroll handler to rotate particle layers based on scroll
+let lastScrollY = window.scrollY;
+
 function onScroll() {
   const scrollY = window.scrollY;
+  const scrollDirection = scrollY > lastScrollY ? 1 : -1;
+
   particleLayers.forEach((layer) => {
-    layer.rotation.y = scrollY * 0.001;
-    layer.rotation.z = scrollY * 0.001;
+    layer.rotation.x += scrollY * scrollDirection * 0.000004;
+    layer.rotation.y += scrollY * scrollDirection * 0.000004;
   });
+
+  lastScrollY = scrollY;
 }
 
-// Animation loop
 function animate() {
   requestAnimationFrame(animate);
 
-  particleLayers.forEach((layer) => {
-    layer.rotation.x += 0.0008; // Slower rotation for a more gradual, cosmic feel
-    layer.rotation.y += 0.0008;
-    layer.rotation.z += 0.0008;
+  let depth = [0.4, 0.8, 1];
+  particleLayers.forEach((layer, index) => {
+    layer.rotation.x += 0.0005 * depth[index];
+    layer.rotation.y += 0.0005 * depth[index];
+    layer.rotation.z += 0.0005 * depth[index];
   });
 
-  // Move the camera based on mouse position
   camera.position.x += (mouseX - camera.position.x) * 0.05;
   camera.position.y += (-mouseY - camera.position.y) * 0.05;
 

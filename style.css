@@ -6,6 +6,14 @@
   /* outline: 1px solid rgba(255, 0, 0, 0.284); */
 }
 
+body {
+  background-image: url(/bg.jpg);
+  background-size: 110%;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: 50% 0vh;
+}
+
 #particle-canvas {
   position: fixed;
   top: 0;
@@ -17,12 +25,8 @@
 }
 
 #app {
-  /* background-image: url(/bg.jpg); */
-  background-size: 110%;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-position: 50% 0%;
   position: relative;
+  z-index: 1;
 }
 
 #thumbnail {
@@ -43,7 +47,7 @@
   position: absolute;
   content: "";
   inset: 0;
-  background-image: linear-gradient(0deg, #ffffff, transparent);
+  background-image: linear-gradient(0deg, #fff, transparent);
   opacity: 0;
   z-index: -1;
   transition: 500ms ease all;
@@ -51,7 +55,7 @@
 }
 
 #thumbnail:hover::before {
-  opacity: 0.35;
+  opacity: 0.1;
   translate: 0% 0%;
 }
 
@@ -80,7 +84,7 @@
   width: calc(100% - 2px);
   height: calc(100% - 2px);
   margin: 1px;
-  background: #000;
+  background: black;
   z-index: 2;
 }
 
