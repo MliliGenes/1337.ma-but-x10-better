@@ -192,7 +192,7 @@ function init() {
           void main() {
             vec2 uv = gl_PointCoord.xy - vec2(0.5); // Center the UV coordinates
             float r = length(uv);                   // Get the distance from the center
-            float glow = exp(-r * 25.0);             // Create a glow effect by fading the edges
+            float glow = exp(-r * 35.0);             // Create a glow effect by fading the edges
             gl_FragColor = vec4(vColor, glow * pointAlpha); // Glow and transparency effect
           }
         `,
@@ -203,6 +203,7 @@ function init() {
 
     const particles = new THREE.Points(geometry, material);
     particleLayers.push(particles);
+    // particleLayers.push(particles);
     scene.add(particles);
   }
 
@@ -245,11 +246,11 @@ function onScroll() {
 function animate() {
   requestAnimationFrame(animate);
 
-  let depth = [0.4, 0.8, 1];
+  let depth = [0.6, 1, 1.2];
   particleLayers.forEach((layer, index) => {
-    layer.rotation.x += 0.0005 * depth[index];
-    layer.rotation.y += 0.0005 * depth[index];
-    layer.rotation.z += 0.0005 * depth[index];
+    layer.rotation.x += 0.0008 * depth[index];
+    layer.rotation.y += 0.0008 * depth[index];
+    layer.rotation.z += 0.0008 * depth[index];
   });
 
   camera.position.x += (mouseX - camera.position.x) * 0.05;
